@@ -20,15 +20,6 @@ namespace Lab32 {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-		[STAThread]
-		void main(array<String^>^ args)
-		{
-			Application::EnableVisualStyles();
-			Application::SetCompatibleTextRenderingDefault(false);
-			Lab32::MyForm form;
-			Application::Run(% form);
-		}
-
 	public:
 		MyForm(void)
 		{
@@ -75,9 +66,11 @@ namespace Lab32 {
 
 
 	private: System::Windows::Forms::TextBox^ TxY2;
-
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ Res;
 	private: System::Windows::Forms::Label^ label9;
+
+
+
 
 	private:
 		/// <summary>
@@ -110,7 +103,7 @@ namespace Lab32 {
 			this->TxY1 = (gcnew System::Windows::Forms::TextBox());
 			this->TxY3 = (gcnew System::Windows::Forms::TextBox());
 			this->TxY2 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->Res = (gcnew System::Windows::Forms::Button());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -216,7 +209,6 @@ namespace Lab32 {
 			this->TxX1->Name = L"TxX1";
 			this->TxX1->Size = System::Drawing::Size(52, 20);
 			this->TxX1->TabIndex = 2;
-			this->TxX1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox3_TextChanged);
 			// 
 			// TxX2
 			// 
@@ -253,32 +245,31 @@ namespace Lab32 {
 			this->TxY2->Size = System::Drawing::Size(52, 20);
 			this->TxY2->TabIndex = 2;
 			// 
-			// button1
+			// Res
 			// 
-			this->button1->Location = System::Drawing::Point(175, 233);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(153, 45);
-			this->button1->TabIndex = 3;
-			this->button1->Text = L"Дорівнює";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->Res->Location = System::Drawing::Point(175, 233);
+			this->Res->Name = L"Res";
+			this->Res->Size = System::Drawing::Size(153, 45);
+			this->Res->TabIndex = 3;
+			this->Res->Text = L"Дорівнює";
+			this->Res->UseVisualStyleBackColor = true;
+			this->Res->Click += gcnew System::EventHandler(this, &MyForm::Res_Click);
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(376, 265);
+			this->label9->Location = System::Drawing::Point(344, 249);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(75, 13);
+			this->label9->Size = System::Drawing::Size(0, 13);
 			this->label9->TabIndex = 4;
-			this->label9->Text = L"Результат Y=";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(525, 349);
+			this->ClientSize = System::Drawing::Size(612, 368);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Res);
 			this->Controls->Add(this->TxY2);
 			this->Controls->Add(this->TxY3);
 			this->Controls->Add(this->TxY1);
@@ -304,9 +295,7 @@ namespace Lab32 {
 
 		}
 #pragma endregion
-	private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void Res_Click(System::Object^ sender, System::EventArgs^ e) {
 	double x, y, x1, x2, x3, y1, y2, y3, d;
 	x = System::Convert::ToDouble(TxX->Text);
 	x1 = System::Convert::ToDouble(TxX1->Text);
